@@ -1,139 +1,55 @@
 <template>
   <div class="booking-grid">
-    <div class="booking-row" v-for="worker in groupedBookings" :key="days[0]?.date">
-      <div class="booking-cells">
-        <div v-for="(booking, index) in days"
-             :key="index"
-             class="booking-cell"
-             :class="getClass(booking.type)"
-             :title="`${booking.date}: ${booking.type}`">
-          <img :src="getStatusIcon(booking.type, booking.extent)" class="status-icon" alt="status-svg"/>
-        </div>
-      </div>
+    <!-- background -->
+      <img class="background-grid" src="../assets/grid/background-grid.svg" alt="bg-grid">
+
+    <!-- overlay -->
+    <!--Fix this so when you click on Month Navigator the layout changes to sqquare grid 2 -->
+    <div class="square-grid-1">
+      <img src="../assets/grid/row1.svg" alt="row-1">
+      <img src="../assets/grid/row2.svg" alt="row-2">
+      <img src="../assets/grid/row3.svg" alt="row-3">
+      <img src="../assets/grid/row4.svg" alt="row-4">
+    </div>
+    <div class="hidden square-grid-2">
+      <img src="../assets/grid/row5.svg" alt="row-1">
+      <img src="../assets/grid/row6.svg" alt="row-2">
+      <img src="../assets/grid/row7.svg" alt="row-3">
+      <img src="../assets/grid/row8.svg" alt="row-4">
+
     </div>
   </div>
 </template>
-
-<script setup>
-import {computed} from 'vue'
-import {format, eachDayOfInterval, isWeekend} from 'date-fns'
-
-const props = defineProps({
-  bookings: Array,
-  selectedType: String,
-  selectedWorker: String,
-})
-
-// Generate all workdays for the whole year
-function generateAllWorkdays() {
-  return eachDayOfInterval({
-    start: new Date(2025, 0, 1),
-    end: new Date(2025, 11, 31),
-  })
-      .filter(date => !isWeekend(date))
-      .map(date => format(date, "yyyy-MM-dd"))
-}
-
-const allDates = generateAllWorkdays()
-
-
-const groupedBookings = computed(() => {
-  //If bookings undefined return an empty array.
-  if (!props.bookings) {
-    return [];
-  }
-
-  const map = new Map()
-  const bookingMap = {}
-  props.bookings.forEach((b) => {
-    if (
-        (!props.selectedWorker || b.worker === props.selectedWorker) &&
-        (!props.selectedType || b.type === props.selectedType)
-    ) {
-      const key = `${b.worker}_${b.date}`
-      bookingMap[key] = b
-    }
-  })
-
-  const days = allDates.map((date) => {
-    const dayData = [];
-    const workers = new Set(props.bookings.map((b) => b.worker));
-    workers.forEach((worker) => {
-      const key = `${worker}_${date}`;
-      if (bookingMap[key]) {
-        dayData.push({
-          date,
-          type: bookingMap[key].type,
-          extent: bookingMap[key].extent || 0,
-          worker: worker, // Include worker in the day's data
-        });
-      } else {
-        dayData.push({date, type: "Tillganglig", extent: 0, worker: worker}); // Include worker
-      }
-    });
-    return dayData;
-  });
-
-  return days;
-});
-
-function getClass(type) {
-  const map = {
-    Tillganglig: 'available',
-    Franvaro: 'absence',
-    Bokad: 'fullybooked',
-    Bokad50: 'booked-half',
-    Pre: 'pre-booked',
-    Pre50: 'pre-booked-half',
-  }
-  return map[type] || ''
-}
-
-function getStatusIcon(type, extent) {
-  const basePath = new URL('../assets/status', import.meta.url).href
-  if (type === 'Franvaro') return `${basePath}/absence.svg}`
-  if (type === 'Tillganglig') return `${basePath}/available.svg}`
-  if (type === 'Bokad' && extent === 100) return `${basePath}/booked100.svg}`
-  if (type === 'Bokad' && extent === 50) return `${basePath}/booked50.svg}`
-  if (type === 'Pre' && extent === 100) return `${basePath}/pre100.svg}`
-  if (type === 'Pre' && extent === 50) return `${basePath}/pre50.svg}`
-  return ''
-}
+<script setup lang="js">
 </script>
 
 <style scoped>
+
+.square-grid-2{
+  display:none;
+}
 .booking-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  position: relative;
+  width: fit-content;
+  display: inline-block;
 }
-
-.booking-row {
-  display: flex;
-  align-items: center;
-}
-
-.worker-name {
-  width: 180px;
-  font-weight: bold;
-}
-
-.booking-cells {
-  display: flex;
-}
-
-.booking-cell {
-  width: 20px;
-  height: 20px;
-  margin: 2px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.status-icon {
+.background-grid {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+}
+.square-grid-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  margin-left: 35px;
+  margin-top: 45px;
+  gap: 70px;
+}
+.square-grid img {
+  width:100%;
+  height: auto;
 }
 </style>

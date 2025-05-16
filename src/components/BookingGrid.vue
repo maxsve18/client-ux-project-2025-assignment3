@@ -20,8 +20,7 @@
     </div>
   </div>
 </template>
-<script setup lang="js">
-
+<script setup>
 const props = defineProps({
   viewMode: Number
 })

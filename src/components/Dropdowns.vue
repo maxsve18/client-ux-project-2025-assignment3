@@ -70,7 +70,7 @@ function toggleJobroleDropdown() {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 .dropdowns {
-  width: 160px;
+  width: 175px;
 }
 
 .dropdowns * {
@@ -83,17 +83,16 @@ function toggleJobroleDropdown() {
 }
 
 #availability-btn {
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 600;
   color: #333333;
-  background-color: #E2E2E2;
+  background-color: #F6F6F6;
   border: 1px solid #9C9C9C;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
   text-align: left;
-  padding-left: 5px;
   width: 100%;
   height: 45px;
 }
@@ -111,7 +110,7 @@ function toggleJobroleDropdown() {
   border-top: 0;
   border-radius: 0 0 5px 5px;
   font-size: 13px;
-  background-color: #E2E2E2;
+  background-color: #F6F6F6;
   text-align: left;
 }
 
@@ -147,13 +146,13 @@ function toggleJobroleDropdown() {
   width: 100%;
   height: 44px;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 17px;
   color: #333333;
-  background-color: #E2E2E2;
+  background-color: #F6F6F6;
 }
 
 #jobrole-btn img {
-  margin-left: 16px;
+  margin-left: 2px;
 }
 
 .jobrole-dropdown-menu {
@@ -165,12 +164,12 @@ function toggleJobroleDropdown() {
   padding-left: 5px;
   bottom: 11px;
   height: 185px;
-  width: 153px;
+  width: 173px;
   border: 1px solid #9C9C9C;
   border-top: 0;
   border-radius: 0 0 5px 5px;
   font-size: 13px;
-  background-color: #E2E2E2;
+  background-color: #F6F6F6;
 }
 
 .jobrole-dropdown-menu img {

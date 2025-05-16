@@ -18,11 +18,11 @@
 <script setup>
 import {workers} from '../data/workers.js';
 
-import carpenterIcon from '../assets/craftman/carpenter.svg'
-import plumberIcon from '../assets/craftman/plumber.svg'
-import electricianIcon from '../assets/craftman/electrician.svg'
-import painterIcon from '../assets/craftman/painter.svg'
-import masonIcon from '../assets/craftman/mason.svg'
+import carpenterIcon from '../assets/craftman/carpenter.svg?url'
+import plumberIcon from '../assets/craftman/plumber.svg?url'
+import electricianIcon from '../assets/craftman/electrician.svg?url'
+import painterIcon from '../assets/craftman/painter.svg?url'
+import masonIcon from '../assets/craftman/mason.svg?url'
 
 const roleIcons = {
   carpenter: carpenterIcon,
@@ -37,6 +37,7 @@ const roleIcons = {
 <style>
 
 .worker-list {
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   width: 158px;
@@ -45,23 +46,24 @@ const roleIcons = {
 .worker-card {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: space-between;
   border: 1px solid #9C9C9C;
+  height: 26px;
   width: 100%;
   border-radius: 5px;
-  background-color: #E2E2E2;
+  background-color: #F6F6F6;
   font-size: 12px;
   margin-bottom: 10px;
-
+  cursor: pointer;
   p {
+    align-self: center;
     padding-left: 5px;
   }
 }
 
 .role-icon {
-  position: absolute;
-  left: 125px;
-  transform: translateY(-11px);
+  position: relative;
+  transform: translateY(2px);
 }
 
 .worker-card:nth-child(4n) {

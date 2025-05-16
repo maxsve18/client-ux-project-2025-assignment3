@@ -1,65 +1,65 @@
 <template>
-  <div style="overflow-x: auto;">
-    <div class="test">
-      <div class="container">
-        <div class="sidebar">
-          <div id="top">
-            <div class="profile">
-              <img src="./assets/icons/anna.svg" alt="Anna avatar">
-              <div class="profile-info">
-                <p>Anna Karlsson</p>
-                <p>Svenssons Hantverk AB</p>
-              </div>
+  <div class="app-wrapper">
+    <div class="container">
+      <div class="sidebar">
+        <div id="top">
+          <div class="profile">
+            <img src="./assets/icons/anna.svg" alt="Anna avatar">
+            <div class="profile-info">
+              <p>Anna Karlsson</p>
+              <p>Svenssons Hantverk AB</p>
             </div>
-
-            <nav>
-              <ul class="nav-links">
-                <li><a href="#" class="active">Bokningsschema</a></li>
-                <li><a href="#">Statistik</a></li>
-                <li><a href="#">Inställningar</a></li>
-                <li><a href="#">Logga ut</a></li>
-              </ul>
-            </nav>
-
-
           </div>
-          <div id="header">
-            <h1>Bokningsschema</h1>
-          </div>
+
+          <nav>
+            <ul class="nav-links">
+              <li><a href="#" class="active">Bokningsschema</a></li>
+              <li><a href="#">Statistik</a></li>
+              <li><a href="#">Inställningar</a></li>
+              <li><a href="#">Logga ut</a></li>
+            </ul>
+          </nav>
         </div>
-        <main>
-          <div>
+        <div id="header">
+          <h1>Bokningsschema</h1>
+          <div id="month-navigator">
             <MonthNavigator
-                :month="currentMonth"
-                :year="currentYear"
                 :displayMonth="displayMonth"
-                :currentyear="currentYear"
+                :current-year="currentYear"
                 :startDate="startDate"
                 :endDate="endDate"
                 :viewMode="viewMode"
                 @go-back-month="goBackMonth"
                 @go-forward-month="goForwardMonth"
             />
-
-            <MonthView :startDate="startDate" :endDate="endDate"/>
-            <BookingGrid :viewMode="viewMode"/>
-            <Dropdowns/>
           </div>
-        </main>
+        </div>
       </div>
+      <main>
+        <div class="filter">
+          <Dropdowns/>
+          <WorkerList/>
+        </div>
+        <div id="month-grid">
+          <WeekView :startDate="startDate" :endDate="endDate"/>
+          <BookingGrid :viewMode="viewMode"/>
+        </div>
+      </main>
     </div>
   </div>
 </template>
 
 <style>
-.test {
+.app-wrapper {
   display: flex;
   justify-content: center; /* horisontell centrering */
   align-items: center;
+  min-width: 1600px;
 }
 
 .container {
-  max-width: 1440px;
+  width: 1440px;
+  background-color: #F6F6F6;
 }
 
 #top {
@@ -118,17 +118,38 @@
 #header {
   margin-top: 40px;
   margin-left: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#month-navigator {
+  position: relative;
+  right: 70px;
+}
+
+filter {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+}
+
+#month-grid {
+  padding-right: 100px;
 }
 
 main {
   margin-left: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 </style>
 
 <script>
 import Dropdowns from './components/Dropdowns.vue';
 import BookingGrid from "./components/BookingGrid.vue";
-import MonthView from "./components/MonthView.vue";
+import WeekView from "./components/WeekView.vue";
 import WorkerList from "./components/WorkerList.vue";
 import MonthNavigator from "./components/MonthNavigator.vue";
 
@@ -137,51 +158,59 @@ export default {
   components: {
     Dropdowns,
     BookingGrid,
-    MonthView,
+    WeekView: WeekView,
     WorkerList,
     MonthNavigator
   },
   data() {
     return {
-      currentMonth: 3,
+      viewMode: 1,
       currentYear: 2025,
-      viewMode: 1 // to toggle square grid layout
+
     };
   },
   computed: {
+
     startDate() {
-      return new Date(this.currentYear, this.currentMonth, 28);
+      const periods = [
+        {start: new Date(this.currentYear, 2, 25)},
+        {start: new Date(this.currentYear, 3, 28)},
+        {start: new Date(this.currentYear, 4, 26)}
+      ]
+      return periods[this.viewMode].start
     },
     endDate() {
-      return new Date(this.currentYear, this.currentMonth + 1, 23);
+      const periods = [
+        {end: new Date(this.currentYear, 3, 19)},
+        {end: new Date(this.currentYear, 4, 23)},
+        {end: new Date(this.currentYear, 5, 20)}
+      ]
+      return periods[this.viewMode].end
     },
     displayMonth() {
-      const months = ["Januari", "Februari", "Mars", "Aprill", "Maj", "Juni",
+      const months = ["Januari", "Februari", "Mars", "April", "Maj", "Juni",
         "Juli", "Augusti", "September", "October", "November", "December"];
-      return `${months[this.currentMonth]} - ${months[(this.currentMonth + 1) % 12]}`;
+      const startMonth = this.startDate.getMonth();
+      const endMonth = this.endDate.getMonth()
+      return `${months[startMonth]} - ${months[endMonth]}`;
     }
   },
   methods: {
     goBackMonth() {
-      if (this.currentMonth === 0) {
-        this.currentMonth = 11;
+      if (this.viewMode === 0) {
+        this.viewMode = 2;
         this.currentYear--;
       } else {
-        this.currentMonth--;
+        this.viewMode--;
       }
-      this.viewMode = this.viewMode === 1 ? 2 : 1; //toggle layout
     },
     goForwardMonth() {
-      if (this.currentMonth === 11) {
-        this.currentMonth = 0
+      if (this.viewMode === 2) {
+        this.viewMode = 0
         this.currentYear++
       } else {
-        this.currentMonth++
+        this.viewMode++
       }
-      this.toggleViewMode()
-    },
-    toggleViewMode() {
-      this.viewMode = this.viewMode === 1 ? 2 : 1
     }
   }
 }

@@ -33,10 +33,13 @@ function cloneDate(date) {
 }
 const weeksOfMonth = computed(() => {
   const result = []
+
+  // Flytta current till måndag i startveckan
   let current = new Date(props.startDate)
   current.setDate(current.getDate() - ((current.getDay() + 6) % 7))
 
-  while (current <= props.endDate) {
+  // Generera alltid 4 veckor
+  for (let weekIndex = 0; weekIndex < 4; weekIndex++) {
     const weekStart = cloneDate(current)
     const days = []
 
@@ -66,26 +69,24 @@ const weeksOfMonth = computed(() => {
 <style scoped>
 .month-view {
   display: flex;
-  flex-direction: column;
-  padding: 16px;
-  gap: 16px;
+  flex-direction: row;
+
 }
 
 .week-block {
   display: flex;
   flex-direction: column;
-  gap: 4px;
 }
-
 
 .week-days {
   display: flex;
-  gap: 16px;
+  border: 1px solid #555555;
+  padding: 10px 29px 10px 25px;
 }
 
 .week-number {
-  font-weight: bold;
-  padding-bottom: 4px;
+  font-weight: 600;
+  padding-bottom: 30px;
   text-align: left;
   font-size: 16px;
 }
@@ -95,6 +96,7 @@ const weeksOfMonth = computed(() => {
   flex-direction: column;
   align-items: center;
   width: 40px;
+
 }
 
 .day-label {

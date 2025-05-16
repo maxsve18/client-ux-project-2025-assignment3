@@ -86,9 +86,9 @@ const weeksOfMonth = computed(() => {
 
 .week-number {
   font-weight: 600;
+  font-size: 18px;
   padding-bottom: 30px;
   text-align: left;
-  font-size: 16px;
 }
 
 .day-box {
@@ -96,16 +96,16 @@ const weeksOfMonth = computed(() => {
   flex-direction: column;
   align-items: center;
   width: 40px;
-
+  cursor: pointer;
 }
 
 .day-label {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .day-number {
-  font-size: 13px;
+  font-size: 12px;
   color: #555;
 }
 </style>

@@ -40,7 +40,7 @@ const roleIcons = {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
-  width: 158px;
+  width: 173px;
 }
 
 .worker-card {
@@ -63,7 +63,11 @@ const roleIcons = {
 
 .role-icon {
   position: relative;
-  transform: translateY(2px);
+  transform: translateY(3px);
+}
+
+.icons:last-child {
+  margin-right: 6px;
 }
 
 .worker-card:nth-child(4n) {

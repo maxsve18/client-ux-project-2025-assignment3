@@ -77,7 +77,6 @@ function toggleJobroleDropdown() {
   font-family: 'Inter', sans-serif;
 }
 
-
 #availability-dropdown {
   margin-bottom: 20px;
 }
@@ -98,7 +97,7 @@ function toggleJobroleDropdown() {
 }
 
 #availability-icon {
-  margin: 0 5px 0 25px;
+  margin: 0 4px 0 18px;
 }
 
 .availability-dropdown-menu {
@@ -164,7 +163,6 @@ function toggleJobroleDropdown() {
   padding-left: 5px;
   bottom: 11px;
   height: 185px;
-  width: 173px;
   border: 1px solid #9C9C9C;
   border-top: 0;
   border-radius: 0 0 5px 5px;
@@ -181,7 +179,7 @@ function toggleJobroleDropdown() {
   position: absolute;
   cursor: pointer;
   margin: 0;
-  left: 105px;
+  left: 116px;
   width: 20px;
   height: 20px;
 }

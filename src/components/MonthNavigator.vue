@@ -41,7 +41,7 @@ const goForwardMonth = () => {
 .month-nav {
   display: flex;
   width: 235px;
-  height: 95px;
+  height: 100px;
   background-color: #F6F6F6;
   justify-content: space-between;
   border-radius: 20px 20px 0 0 ;

@@ -97,7 +97,7 @@
 .nav-links {
   display: flex;
   flex-direction: row;
-  margin-right: 20px;
+  margin-right: 65px;
 
   li {
     list-style-type: none;
@@ -105,6 +105,7 @@
     margin-left: auto;
 
     a {
+      font-weight: 600;
       color: black;
       text-decoration: none;
     }
@@ -116,16 +117,22 @@
 }
 
 #header {
-  margin-top: 40px;
+  margin-top: 35px;
   margin-left: 70px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  h1 {
+    font-size: 40px;
+  }
 }
 
 #month-navigator {
   position: relative;
   right: 70px;
+  button {
+    cursor: pointer;
+  }
 }
 
 filter {
@@ -136,6 +143,7 @@ filter {
 
 #month-grid {
   padding-right: 100px;
+  font-weight: 600;
 }
 
 main {

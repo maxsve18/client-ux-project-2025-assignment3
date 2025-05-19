@@ -4,45 +4,45 @@
       <div id="availability-dropdown" class="dropdown">
         <button @click="toggleAvailabilityDropdown" id="availability-btn">
           Omfattning
-          <img src="../assets/icons/availability.svg" id="availability-icon" alt="availability icon">
-          <img src="../assets/icons/chevron.svg" class="chevron-icon" :class="{ 'rotate': showAvailabilityDropdown }"
+          <img src="../assets/icons/availability.svg?url" id="availability-icon" alt="availability icon">
+          <img src="../assets/icons/chevron.svg?url" class="chevron-icon" :class="{ 'rotate': showAvailabilityDropdown }"
                alt="chevron icon">
         </button>
         <div v-if="showAvailabilityDropdown" class="availability-dropdown-menu">
-          <div class="dropdown-item">Tillgänglig <img src="../assets/status/available.svg" alt="available icon"/></div>
-          <div class="dropdown-item">Frånvaro <img src="../assets/status/absence.svg" alt="absence icon"/></div>
-          <div class="dropdown-item">Fullbokad <img src="../assets/status/booked100.svg" alt="booked100 icon"/></div>
-          <div class="dropdown-item">Bokad 50% <img src="../assets/status/booked50.svg" alt="booked50 icon"/></div>
-          <div class="dropdown-item">Prl. Fullbokad <img src="../assets/status/pre100.svg" alt="pre100 icon"/></div>
-          <div class="dropdown-item">Prl. Bokad 50% <img src="../assets/status/pre50.svg" alt="pre50 icon"/></div>
+          <div class="dropdown-item">Tillgänglig <img src="../assets/status/available.svg?url" alt="available icon"/></div>
+          <div class="dropdown-item">Frånvaro <img src="../assets/status/absence.svg?url" alt="absence icon"/></div>
+          <div class="dropdown-item">Fullbokad <img src="../assets/status/booked100.svg?url" alt="booked100 icon"/></div>
+          <div class="dropdown-item">Bokad 50% <img src="../assets/status/booked50.svg?url" alt="booked50 icon"/></div>
+          <div class="dropdown-item">Prl. Fullbokad <img src="../assets/status/pre100.svg?url" alt="pre100 icon"/></div>
+          <div class="dropdown-item">Prl. Bokad 50% <img src="../assets/status/pre50.svg?url" alt="pre50 icon"/></div>
         </div>
       </div>
 
       <div id="jobrole-dropdown" class="dropdown">
         <button @click="toggleJobroleDropdown" id="jobrole-btn">
           Alla hantverkare
-          <img src="../assets/icons/chevron.svg" class="chevron-icon" :class="{ 'rotate': showJobroleDropdown }"
+          <img src="../assets/icons/chevron.svg?url" class="chevron-icon" :class="{ 'rotate': showJobroleDropdown }"
                alt="chevron icon">
         </button>
         <div v-if="showJobroleDropdown" class="jobrole-dropdown-menu">
           <div class="dropdown-item-jb">
-            <img src="../assets/craftman/carpenter.svg" alt="carpenter icon"/> Snickare
+            <img src="../assets/craftman/carpenter.svg?url" alt="carpenter icon"/> Snickare
             <input type="checkbox" name="filter" class="job-checkbox">
           </div>
           <div class="dropdown-item-jb">
-            <img src="../assets/craftman/plumber.svg" alt="plumber icon"/> Rörmokare
+            <img src="../assets/craftman/plumber.svg?url" alt="plumber icon"/> Rörmokare
             <input type="checkbox" name="filter" class="job-checkbox">
           </div>
           <div class="dropdown-item-jb">
-            <img src="../assets/craftman/electrician.svg" alt="electrician icon"/> Elektriker
+            <img src="../assets/craftman/electrician.svg?url" alt="electrician icon"/> Elektriker
             <input type="checkbox" name="filter" class="job-checkbox">
           </div>
           <div class="dropdown-item-jb">
-            <img src="../assets/craftman/painter.svg" alt="painter icon"/> Målare
+            <img src="../assets/craftman/painter.svg?url" alt="painter icon"/> Målare
             <input type="checkbox" name="filter" class="job-checkbox">
           </div>
           <div class="dropdown-item-jb">
-            <img src="../assets/craftman/mason.svg" alt="mason icon"/> Murare
+            <img src="../assets/craftman/mason.svg?url" alt="mason icon"/> Murare
             <input type="checkbox" name="filter" class="job-checkbox">
           </div>
         </div>

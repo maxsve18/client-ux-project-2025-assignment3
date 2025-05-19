@@ -4,7 +4,7 @@
       <div class="sidebar">
         <div id="top">
           <div class="profile">
-            <img src="./assets/icons/anna.svg" alt="Anna avatar">
+            <img src="./assets/icons/anna.svg?url" alt="Anna avatar">
             <div class="profile-info">
               <p>Anna Karlsson</p>
               <p>Svenssons Hantverk AB</p>

@@ -1,14 +1,14 @@
 <template>
   <div class="month-nav">
     <button @click="goBackMonth" class="nav-btn">
-      <img src="../assets/icons/back-btn.svg" alt="back-btn">
+      <img src="../assets/icons/back-btn.svg?url" alt="back-btn">
     </button>
     <div id="display-text">
       <div id="view-months">{{ props.displayMonth }}</div>
       <div id="view-year">{{ props.currentYear }}</div>
     </div>
     <button @click="goForwardMonth">
-      <img src="../assets/icons/forward-btn.svg" alt="forward-btn">
+      <img src="../assets/icons/forward-btn.svg?url" alt="forward-btn">
     </button>
   </div>
 </template>
